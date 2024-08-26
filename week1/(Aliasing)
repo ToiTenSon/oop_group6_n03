@@ -1,0 +1,26 @@
+// Định nghĩa lớp Number với một thuộc tính công khai i kiểu int
+public class Number {
+    public int i; // Thuộc tính i của lớp Number
+}
+
+// Định nghĩa lớp PassObject chứa phương thức main để thực thi chương trình
+public class PassObject {
+    // Định nghĩa phương thức tĩnh f nhận đối số là một đối tượng Number
+    static void f(Number m) {
+        // Thay đổi giá trị của thuộc tính i của đối tượng m thành 15
+        m.i = 15;
+    }
+
+    public static void main(String[] args) {
+        // Tạo một đối tượng n của lớp Number
+        Number n = new Number();
+        // Gán giá trị 14 cho thuộc tính i của đối tượng n
+        n.i = 14;
+        
+        // Gọi phương thức f với đối tượng n làm tham số
+        f(n); // Phương thức f thay đổi giá trị của n.i thành 15
+        
+        // In giá trị của thuộc tính i của đối tượng n
+        System.out.println(n.i); // Kết quả là 15
+    }
+}
