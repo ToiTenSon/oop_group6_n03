@@ -1,0 +1,32 @@
+// Định nghĩa lớp Number với một thuộc tính công khai i kiểu int
+public class Number {
+    public int i; // Thuộc tính i của lớp Number
+}
+
+// Định nghĩa lớp Assignment2 chứa phương thức main để thực thi chương trình
+public class Assignment2 {
+    public static void main(String[] args) {
+        // Tạo đối tượng n1 của lớp Number
+        Number n1 = new Number();
+        // Tạo đối tượng n2 của lớp Number
+        Number n2 = new Number();
+        
+        // Gán giá trị 2 cho thuộc tính i của đối tượng n1
+        n1.i = 2;
+        // Gán giá trị 5 cho thuộc tính i của đối tượng n2
+        n2.i = 5;
+        
+        // Gán đối tượng n2 cho n1. Sau lệnh này, n1 và n2 trỏ đến cùng một đối tượng
+        n1 = n2;
+        
+        // Thay đổi giá trị của thuộc tính i của đối tượng n2 thành 10
+        n2.i = 10; // n1.i cũng bị thay đổi thành 10 vì n1 và n2 trỏ đến cùng một đối tượng
+        
+        // Thay đổi giá trị của thuộc tính i của đối tượng n1 thành 20
+        n1.i = 20; // n2.i cũng bị thay đổi thành 20 vì n1 và n2 trỏ đến cùng một đối tượng
+
+        // Tại thời điểm này:
+        // n1.i = 20
+        // n2.i = 20
+    }
+}
