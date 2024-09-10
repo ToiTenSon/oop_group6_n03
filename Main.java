@@ -1,22 +1,27 @@
-public class bai1 {
+public class Main {
     public static void main(String[] args) {
-        DiscreteSignal discreteSignal = new DiscreteSignal(5.0, 50.0);
-        ContinuousSignal continuousSignal = new ContinuousSignal(3.0, 60.0, 2.0);
+        // Tạo đối tượng tín hiệu rời rạc (DiscreteSignal)
+        DiscreteSignal discreteSignal = new DiscreteSignal(5.0, 10.0, 2.0);
+        System.out.println("Discrete Signal Properties:");
+        System.out.println("Amplitude: " + discreteSignal.getAmplitude());
+        System.out.println("Frequency: " + discreteSignal.getFrequency());
+        System.out.println("Period: " + discreteSignal.getPeriod());
 
-        System.out.println("Tín hiệu rời rạc:");
-        System.out.println("Biên độ: " + discreteSignal.getAmplitude());
-        System.out.println("Tần số: " + discreteSignal.getFrequency());
-        System.out.println("Chu kỳ: " + discreteSignal.getPeriod());
-        System.out.println("Bước sóng: " + discreteSignal.getWavelength());
+        // Tính toán tín hiệu rời rạc với giá trị n
+        int n = 4;
+        System.out.println("\nCalculating for n = " + n);
+        System.out.println("calculateX(" + n + "): " + discreteSignal.calculateX(n));
+        System.out.println("discreteSignalSum(" + n + "): " + discreteSignal.discreteSignalSum(n));
 
-        int[] x = {1, 2, 3, 4, 5}; 
-        int n = 2; 
-        System.out.println("x(" + n + ") = " + DiscreteSignal.DiscreteSum.calculateSum(x, n));
+        // Tạo đối tượng tín hiệu liên tục (ContinuousSignal)
+        ContinuousSignal continuousSignal = new ContinuousSignal(3.0, 15.0, 1.5);
+        System.out.println("\nContinuous Signal Properties:");
+        System.out.println("Amplitude: " + continuousSignal.getAmplitude());
+        System.out.println("Frequency: " + continuousSignal.getFrequency());
+        System.out.println("Period: " + continuousSignal.getPeriod());
 
-        System.out.println("\nTín hiệu liên tục:");
-        System.out.println("Biên độ: " + continuousSignal.getAmplitude());
-        System.out.println("Tần số: " + continuousSignal.getFrequency());
-        System.out.println("Chu kỳ: " + continuousSignal.getPeriod());
-        System.out.println("Bước sóng: " + continuousSignal.getWavelength());
+        // Sử dụng đối tượng Radar để phân tích tín hiệu rời rạc
+        Radar radar = new Radar();
+        System.out.println("\nRadar signal analysis for n = " + n + ": " + radar.radarDiscreteSignal(n));
     }
 }
