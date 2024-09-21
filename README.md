@@ -21,3 +21,4 @@ các nghiệp vụ cho bài toán (tùy chọn).
 2. Nguyễn Đăng Hiếu
 ## UML dự án
 1. Class diagram
+  ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/105447.png)
