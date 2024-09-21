@@ -1,4 +1,4 @@
-Bài tập 2. Xây dựng ứng dụng quản lý sinh viên.
+# Xây dựng ứng dụng quản lý sinh viên.
 Yêu cầu:
 - Giao diện cửa sổ JavaFX.
 - Có chức năng quản lý sinh viên.
@@ -16,3 +16,8 @@ Yêu cầu:
 như ArrayList, LinkedList, Map, ….
 - Sinh viên có thể thêm các chức năng vào chương trình để ứng dụng phong phú hơn bằng cách thêm
 các nghiệp vụ cho bài toán (tùy chọn).
+## Thành viên nhóm
+1. Nguyễn Trường Sơn
+2. Nguyễn Đăng Hiếu
+## UML dự án
+1. Class diagram
