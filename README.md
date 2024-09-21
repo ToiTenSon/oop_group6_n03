@@ -1,4 +1,9 @@
-# Xây dựng ứng dụng quản lý sinh viên.
+
+# Nhóm 6
+các thành viên:
+  1. Nguyễn Trường Sơn
+  2. Nguyễn Đăng Hiếu
+## Xây dựng ứng dụng quản lý sinh viên.
 Yêu cầu:
 - Giao diện cửa sổ JavaFX.
 - Có chức năng quản lý sinh viên.
@@ -16,9 +21,7 @@ Yêu cầu:
 như ArrayList, LinkedList, Map, ….
 - Sinh viên có thể thêm các chức năng vào chương trình để ứng dụng phong phú hơn bằng cách thêm
 các nghiệp vụ cho bài toán (tùy chọn).
-## Thành viên nhóm
-1. Nguyễn Trường Sơn
-2. Nguyễn Đăng Hiếu
-## UML dự án
-1. Class diagram
-  ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/105447.png)
+# Sơ đồ khối yêu cầu
+## 1.1 UML class diagram
+
+  ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/%E1%BA%A2nh%20ch%E1%BB%A5p%20m%C3%A0n%20h%C3%ACnh%202024-09-21%20172019.png)
