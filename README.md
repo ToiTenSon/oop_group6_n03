@@ -25,3 +25,4 @@ các nghiệp vụ cho bài toán (tùy chọn).
 ## 1.1 UML class diagram
 
   ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/%E1%BA%A2nh%20ch%E1%BB%A5p%20m%C3%A0n%20h%C3%ACnh%202024-09-21%20173237.png)
+## 1.2 UML Sequence Diagram
