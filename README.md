@@ -36,5 +36,4 @@ các nghiệp vụ cho bài toán (tùy chọn).
 
 ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/them%20hoac%20sua.png)
 ## Giao diện đầu tiên của dự án
-![alt]
-(https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/A%CC%89nh%20ma%CC%80n%20hi%CC%80nh%202024-09-26%20lu%CC%81c%2019.49.20.png)
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/A%CC%89nh%20ma%CC%80n%20hi%CC%80nh%202024-09-26%20lu%CC%81c%2019.49.20.png)
