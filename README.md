@@ -24,13 +24,14 @@ các nghiệp vụ cho bài toán (tùy chọn).
 # Sơ đồ khối yêu cầu
 ## 1.1 UML class diagram
 
-  ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/%E1%BA%A2nh%20ch%E1%BB%A5p%20m%C3%A0n%20h%C3%ACnh%202024-09-21%20173237.png)
+  ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/%E1%BA%A2nh%20ch%E1%BB%A5p%20m%C3%A0n%20h%C3%ACnh%202024-09-26%20120319.png)
 ## 1.2 UML Sequence Diagram
-## 1.2.1
-![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/%C4%91a%CC%86ng%20ky%CC%81%20ho%CC%A3c.png)
-## 1.2.2
+## 1.2.1: Đăng kí môn 
 
-![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/tra%20cu%CC%9B%CC%81u%20sv.png)
-## 1.2.3
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/dang%20ki%20mon.png)
+## 1.2.2: Nhập điểm sinh viên
 
-![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/nha%CC%A3%CC%82p%20%C4%91ie%CC%82%CC%89m%20sinh%20vie%CC%82n.png)
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/nhap%20diem.png)
+## 1.2.3: thêm hoặc chỉnh sửa thông tin sinh 
+
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/them%20hoac%20sua.png)
