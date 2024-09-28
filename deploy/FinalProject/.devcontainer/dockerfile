@@ -1,0 +1,12 @@
+# Sử dụng base image Ubuntu
+FROM ubuntu:20.04
+
+# Cài đặt JDK 17
+RUN apt-get update && apt-get install -y openjdk-17-jdk
+
+# Thiết lập JAVA_HOME
+ENV JAVA_HOME /usr/lib/jvm/java-17-openjdk-amd64
+ENV PATH $JAVA_HOME/bin:$PATH
+
+# Kiểm tra JDK đã được cài đặt
+RUN java -version
