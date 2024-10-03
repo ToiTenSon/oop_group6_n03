@@ -24,16 +24,16 @@ các nghiệp vụ cho bài toán (tùy chọn).
 # Sơ đồ khối yêu cầu
 ## 1.1 UML class diagram
 
-  ![alt](src/main/resources/com/example/managerstudent/image/dang ki mon.png)
+  ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/%E1%BA%A2nh%20ch%E1%BB%A5p%20m%C3%A0n%20h%C3%ACnh%202024-09-26%20120319.png)
 ## 1.2 UML Sequence Diagram
 ## 1.2.1: Đăng kí môn 
 
-![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/dang%20ki%20mon.png)
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/dang%20ki%20mon.png)
 ## 1.2.2: Nhập điểm sinh viên
 
-![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/nhap%20diem.png)
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/nhap%20diem.png)
 ## 1.2.3: thêm hoặc chỉnh sửa thông tin sinh 
 
-![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/them%20hoac%20sua.png)
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/them%20hoac%20sua.png)
 ## Giao diện đầu tiên của dự án
-![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/A%CC%89nh%20ma%CC%80n%20hi%CC%80nh%202024-09-26%20lu%CC%81c%2019.49.20.png)
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/giaodien.png)
