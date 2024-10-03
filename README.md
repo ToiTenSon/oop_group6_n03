@@ -24,7 +24,7 @@ các nghiệp vụ cho bài toán (tùy chọn).
 # Sơ đồ khối yêu cầu
 ## 1.1 UML class diagram
 
-  ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/main/img/%E1%BA%A2nh%20ch%E1%BB%A5p%20m%C3%A0n%20h%C3%ACnh%202024-09-26%20120319.png)
+  ![alt](src/main/resources/com/example/managerstudent/image/dang ki mon.png)
 ## 1.2 UML Sequence Diagram
 ## 1.2.1: Đăng kí môn 
 
