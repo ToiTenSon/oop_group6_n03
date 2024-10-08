@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Choice">
+   <children>
+      <ImageView fitHeight="401.0" fitWidth="606.0" layoutX="-1.0">
+         <image>
+            <Image url="@../../../../../../../../Downloads/pngtree-remote-freelancer-earns-effectively-from-home-office-student-manager-laptop-vector-png-image_44233076.jpg" />
+         </image>
+      </ImageView>
+      <Text layoutX="210.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SINH VIÊN">
+         <font>
+            <Font name="System Bold" size="33.0" />
+         </font>
+      </Text>
+      <Button layoutX="62.0" layoutY="101.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="149.0" text="Đăng ký môn">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
