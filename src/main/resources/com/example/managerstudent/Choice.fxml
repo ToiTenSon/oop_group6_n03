@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.ChoicesController">
    <children>
       <ImageView fitHeight="401.0" fitWidth="606.0" layoutX="-1.0">
          <image>
@@ -19,10 +19,9 @@
             <Font name="System Bold" size="33.0" />
          </font>
       </Text>
-      <Button layoutX="62.0" layoutY="101.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="149.0" text="Đăng ký môn">
+      <Button fx:id="registerButton" layoutX="60.0" layoutY="94.0" onAction="#handleRegisterCourse" prefHeight="29.0" prefWidth="139.0" text="Đăng ký môn">
          <font>
-            <Font size="14.0" />
-         </font>
-      </Button>
+            <Font size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

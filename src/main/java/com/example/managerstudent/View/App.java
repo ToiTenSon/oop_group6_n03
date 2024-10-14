@@ -13,7 +13,6 @@ public class App extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/interface1.fxml"));
             AnchorPane root = loader.load();
-
             Scene scene = new Scene(root);
             primaryStage.setTitle("QUẢN LÝ SINH VIÊN");
             primaryStage.setScene(scene);

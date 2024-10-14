@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.MainController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.ChoicesController">
    <children>
       <ImageView fitHeight="426.0" fitWidth="600.0">
          <image>
@@ -19,12 +19,12 @@
             <Font name="System Bold" size="43.0" />
          </font>
       </Text>
-      <Button layoutX="48.0" layoutY="89.0" mnemonicParsing="false" text="Nhập điểm sinh viên" textFill="#110707">
+      <Button fx:id="inputScoreButton" layoutX="48.0" layoutY="89.0" mnemonicParsing="false" text="Nhập điểm sinh viên" textFill="#110707" onAction="#handleInputScore">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button layoutX="48.0" layoutY="145.0" mnemonicParsing="false" text="Chỉnh sửa thông tin sinh viên">
+      <Button fx:id="editStudentButton" layoutX="48.0" layoutY="145.0" mnemonicParsing="false" text="Chỉnh sửa thông tin sinh viên" onAction="#handleEditStudent">
          <font>
             <Font size="14.0" />
          </font>
