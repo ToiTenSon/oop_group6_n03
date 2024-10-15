@@ -2,34 +2,34 @@ package com.example.managerstudent.Model;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 public class Student {
-    private int student_id;
-    private String student_name;
+    private int studentId;
+    private String studentName;
     private String gender;
-    private Map<Course, Optional<Float>> courses = new HashMap<>();
+    private Map<Course, Float> grades;
 
-    public Student(int student_id, String student_name, String gender) {
-        this.student_id = student_id;
-        this.student_name = student_name;
+    public Student(int studentId, String studentName, String gender) {
+        this.studentId = studentId;
+        this.studentName = studentName;
         this.gender = gender;
+        this.grades = new HashMap<>();
     }
 
     public int getStudentId() {
-        return student_id;
+        return studentId;
     }
 
-    public void setStudentId(int student_id) {
-        this.student_id = student_id;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
     public String getStudentName() {
-        return student_name;
+        return studentName;
     }
 
-    public void setStudentName(String student_name) {
-        this.student_name = student_name;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
     public String getGender() {
@@ -40,11 +40,11 @@ public class Student {
         this.gender = gender;
     }
 
-    public Map<Course, Optional<Float>> getCourses() {
-        return courses;
+    public void addGrade(Course course, float grade) {
+        grades.put(course, grade);
     }
 
-    public void setCourses(Map<Course, Optional<Float>> courses) {
-        this.courses = courses;
+    public Map<Course, Float> getGrades() {
+        return grades;
     }
 }

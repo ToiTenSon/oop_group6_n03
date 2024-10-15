@@ -19,8 +19,9 @@
         <TextField fx:id="idField" layoutX="400.0" layoutY="34.0" promptText="Nhập ID" />
         <TextField fx:id="nameField" layoutX="400.0" layoutY="70.0" promptText="Nhập Họ và Tên" />
         <ComboBox fx:id="genderComboBox" layoutX="400.0" layoutY="110.0" promptText="Chọn Giới Tính" />
-        <Button text="Thêm Sinh Viên" layoutX="400.0" layoutY="150.0" onAction="#handleAddStudent"/>
-        <Button text="Xóa Sinh Viên" layoutX="500.0" layoutY="150.0" onAction="#handleRemoveStudent"/>
-        <Button text="Cập Nhật Sinh Viên" layoutX="600.0" layoutY="150.0" onAction="#handleUpdateStudent"/>
+        <Button layoutX="400.0" layoutY="265.0" onAction="#handleAddStudent" text="Thêm Sinh Viên" />
+        <Button layoutX="400.0" layoutY="305.0" onAction="#handleRemoveStudent" text="Xóa Sinh Viên" />
+        <Button layoutX="600.0" layoutY="265.0" onAction="#handleUpdateStudent" text="Cập Nhật Sinh Viên" />
+        <Button layoutX="600.0" layoutY="191.0" onAction="#handleDetailStudent" text="Chi tiết Sinh Viên" />
     </children>
 </Pane>

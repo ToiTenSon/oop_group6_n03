@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.managerstudent.Controller.StudentDetailController">
+    <Label text="Thông Tin Sinh Viên" style="-fx-font-size: 16px; -fx-font-weight: bold;"/>
+    <VBox spacing="10" alignment="TOP_LEFT" layoutY="30">
+        <Label fx:id="idLabel"/>
+        <Label fx:id="nameLabel"/>
+        <Label fx:id="genderLabel"/>
+        <Label text="Danh Sách Điểm:" style="-fx-font-weight: bold;"/>
+        <ListView fx:id="gradeListView" />
+        <Button fx:id="removeGradeButton" text="Xóa Điểm" onAction="#handleRemoveGrade" />
+    </VBox>
+</AnchorPane>

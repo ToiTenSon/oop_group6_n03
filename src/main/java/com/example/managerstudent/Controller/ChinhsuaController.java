@@ -1,5 +1,6 @@
 package com.example.managerstudent.Controller;
 
+import com.example.managerstudent.Model.Course;
 import com.example.managerstudent.Model.Student;
 import com.example.managerstudent.Model.StudentManager;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -7,26 +8,41 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class ChinhsuaController {
     @FXML
-    private TableView<Student> studentTable; // Bảng hiển thị sinh viên
+    private TableView<Student> studentTable;
     @FXML
-    private TableColumn<Student, Integer> idColumn; // Cột ID
+    private TableColumn<Student, Integer> idColumn;
     @FXML
-    private TableColumn<Student, String> nameColumn; // Cột tên
+    private TableColumn<Student, String> nameColumn;
     @FXML
-    private TableColumn<Student, String> genderColumn; // Cột giới tính
+    private TableColumn<Student, String> genderColumn;
     @FXML
-    private TextField idField; // Trường nhập ID
+    private TextField idField;
     @FXML
-    private TextField nameField; // Trường nhập tên
+    private TextField nameField;
     @FXML
-    private ComboBox<String> genderComboBox; // ComboBox cho giới tính
+    private ComboBox<String> genderComboBox;
+    @FXML
+    private TextField courseIdField;
+    @FXML
+    private TextField courseNameField;
+    @FXML
+    private TextField gradeField;
 
     private StudentManager studentManager;
-    private ObservableList<Student> studentList; // Danh sách sinh viên cho bảng
+    private ObservableList<Student> studentList;
 
     public ChinhsuaController() {
         studentManager = new StudentManager();
@@ -35,17 +51,13 @@ public class ChinhsuaController {
 
     @FXML
     private void initialize() {
-        // Thiết lập các cột trong bảng
         idColumn.setCellValueFactory(cellData -> new SimpleIntegerProperty(cellData.getValue().getStudentId()).asObject());
         nameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getStudentName()));
         genderColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getGender()));
+        studentTable.setItems(studentList);
 
-        studentTable.setItems(studentList); // Đặt danh sách sinh viên cho bảng
-
-        // Thiết lập các giá trị cho ComboBox
         genderComboBox.getItems().addAll("Nam", "Nữ");
 
-        // Cập nhật trường nhập liệu khi chọn sinh viên
         studentTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue != null) {
                 idField.setText(String.valueOf(newValue.getStudentId()));
@@ -61,14 +73,10 @@ public class ChinhsuaController {
         String name = nameField.getText();
         String gender = genderComboBox.getValue();
 
-        // Tạo sinh viên mới
         Student newStudent = new Student(id, name, gender);
-
-        // Thêm sinh viên vào danh sách
         studentManager.addStudent(newStudent);
-        studentList.add(newStudent); // Cập nhật danh sách sinh viên trên giao diện
+        studentList.add(newStudent);
 
-        // Xóa dữ liệu đã nhập
         idField.clear();
         nameField.clear();
         genderComboBox.setValue(null);
@@ -79,7 +87,8 @@ public class ChinhsuaController {
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
         if (selectedStudent != null) {
             studentManager.removeStudent(selectedStudent.getStudentId());
-            studentList.remove(selectedStudent); // Cập nhật danh sách sinh viên trên giao diện
+            studentList.remove(selectedStudent);
+            showAlert("Thông báo", "Đã xóa sinh viên: " + selectedStudent.getStudentName());
         } else {
             showAlert("Chưa chọn sinh viên", "Vui lòng chọn một sinh viên để xóa.");
         }
@@ -89,26 +98,86 @@ public class ChinhsuaController {
     private void handleUpdateStudent() {
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
         if (selectedStudent != null) {
-            // Lấy thông tin từ các trường nhập liệu
             int id = Integer.parseInt(idField.getText());
             String name = nameField.getText();
             String gender = genderComboBox.getValue();
 
-            // Cập nhật thông tin cho sinh viên đã chọn
             selectedStudent.setStudentId(id);
             selectedStudent.setStudentName(name);
             selectedStudent.setGender(gender);
 
-            // Gọi phương thức updateStudent trong StudentManager
             studentManager.updateStudent(selectedStudent);
-            studentTable.refresh(); // Cập nhật bảng để hiển thị thông tin mới
+            studentTable.refresh();
 
-            // Xóa dữ liệu đã nhập
             idField.clear();
             nameField.clear();
             genderComboBox.setValue(null);
         } else {
             showAlert("Chưa chọn sinh viên", "Vui lòng chọn một sinh viên để cập nhật.");
+        }
+    }
+
+    @FXML
+    private void handleUpdateStudentGrade() {
+        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
+        if (selectedStudent != null) {
+            String courseId = courseIdField.getText();
+            String courseName = courseNameField.getText();
+            float grade = Float.parseFloat(gradeField.getText());
+
+            Course course = new Course(courseId, courseName, 3);
+            studentManager.updateStudentGrade(selectedStudent.getStudentId(), course, grade);
+
+            // Lưu thông tin sinh viên vào tệp
+            saveStudentDetailsToFile(selectedStudent, course.getCourseName(), grade);
+
+            // Cập nhật thông tin chi tiết sinh viên
+            handleDetailStudent();
+
+            studentTable.refresh();
+
+            courseIdField.clear();
+            courseNameField.clear();
+            gradeField.clear();
+        } else {
+            showAlert("Chưa chọn sinh viên", "Vui lòng chọn một sinh viên để cập nhật điểm.");
+        }
+    }
+
+    private void saveStudentDetailsToFile(Student student, String course, float grade) {
+        String filePath = "src/main/resources/com/example/managerstudent/students.txt"; // Đường dẫn đến tệp
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            String data = String.format("ID: %d, Họ Tên: %s, Giới Tính: %s, Môn Học: %s, Điểm: %.2f%n",
+                    student.getStudentId(), student.getStudentName(), student.getGender(), course, grade);
+            writer.write(data); // Ghi thông tin vào tệp
+        } catch (IOException e) {
+            e.printStackTrace();
+            showAlert("Lỗi", "Không thể lưu thông tin sinh viên vào tệp.");
+        }
+    }
+
+    @FXML
+    private void handleDetailStudent() {
+        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
+        if (selectedStudent != null) {
+            // Tạo cửa sổ mới để hiển thị thông tin chi tiết
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/StudentDetail.fxml"));
+                Parent root = loader.load();
+
+                // Lấy controller và thiết lập thông tin
+                StudentDetailController detailController = loader.getController();
+                detailController.setStudentDetails(selectedStudent); // Truyền thông tin sinh viên
+
+                Stage stage = new Stage();
+                stage.setTitle("Chi tiết sinh viên");
+                stage.setScene(new Scene(root, 400, 300));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            showAlert("Chưa chọn sinh viên", "Vui lòng chọn một sinh viên để xem chi tiết.");
         }
     }
 
