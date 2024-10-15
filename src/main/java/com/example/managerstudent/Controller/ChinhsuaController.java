@@ -44,6 +44,15 @@ public class ChinhsuaController {
 
         // Thiết lập các giá trị cho ComboBox
         genderComboBox.getItems().addAll("Nam", "Nữ");
+
+        // Cập nhật trường nhập liệu khi chọn sinh viên
+        studentTable.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                idField.setText(String.valueOf(newValue.getStudentId()));
+                nameField.setText(newValue.getStudentName());
+                genderComboBox.setValue(newValue.getGender());
+            }
+        });
     }
 
     @FXML
@@ -73,6 +82,33 @@ public class ChinhsuaController {
             studentList.remove(selectedStudent); // Cập nhật danh sách sinh viên trên giao diện
         } else {
             showAlert("Chưa chọn sinh viên", "Vui lòng chọn một sinh viên để xóa.");
+        }
+    }
+
+    @FXML
+    private void handleUpdateStudent() {
+        Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
+        if (selectedStudent != null) {
+            // Lấy thông tin từ các trường nhập liệu
+            int id = Integer.parseInt(idField.getText());
+            String name = nameField.getText();
+            String gender = genderComboBox.getValue();
+
+            // Cập nhật thông tin cho sinh viên đã chọn
+            selectedStudent.setStudentId(id);
+            selectedStudent.setStudentName(name);
+            selectedStudent.setGender(gender);
+
+            // Gọi phương thức updateStudent trong StudentManager
+            studentManager.updateStudent(selectedStudent);
+            studentTable.refresh(); // Cập nhật bảng để hiển thị thông tin mới
+
+            // Xóa dữ liệu đã nhập
+            idField.clear();
+            nameField.clear();
+            genderComboBox.setValue(null);
+        } else {
+            showAlert("Chưa chọn sinh viên", "Vui lòng chọn một sinh viên để cập nhật.");
         }
     }
 

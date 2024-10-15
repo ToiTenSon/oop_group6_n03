@@ -25,12 +25,6 @@ public class StudentManager {
         students.removeIf(student -> student.getStudentId() == student_id);
         saveStudentsToFile(); // Lưu dữ liệu sau khi xóa sinh viên
     }
-
-    public void updateStudent(Student student) {
-        // Cập nhật thông tin sinh viên (nếu cần thiết)
-        saveStudentsToFile(); // Lưu dữ liệu sau khi cập nhật sinh viên
-    }
-
     // Lưu tất cả sinh viên vào file
     private void saveStudentsToFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
@@ -60,6 +54,19 @@ public class StudentManager {
             e.printStackTrace(); // Xử lý lỗi định dạng số
         }
     }
+    public void updateStudent(Student updatedStudent) {
+        for (int i = 0; i < students.size(); i++) {
+            Student student = students.get(i);
+            if (student.getStudentId() == updatedStudent.getStudentId()) {
+                // Cập nhật thông tin của sinh viên
+                student.setStudentName(updatedStudent.getStudentName());
+                student.setGender(updatedStudent.getGender());
+                saveStudentsToFile(); // Lưu dữ liệu sau khi cập nhật sinh viên
+                break; // Thoát vòng lặp khi tìm thấy sinh viên cần cập nhật
+            }
+        }
+    }
+
 
     // Getter cho danh sách sinh viên
     public List<Student> getStudents() {

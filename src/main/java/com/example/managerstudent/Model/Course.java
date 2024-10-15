@@ -1,30 +1,30 @@
 package com.example.managerstudent.Model;
 
 public class Course {
-    private String course_id;
-    private String course_name;
+    private String courseId;
+    private String courseName;
     private int credits;
 
-    public Course(String course_id, String course_name, int credits) {
-        this.course_id = course_id;
-        this.course_name = course_name;
+    public Course(String courseId, String courseName, int credits) {
+        this.courseId = courseId;
+        this.courseName = courseName;
         this.credits = credits;
     }
 
     public String getCourseId() {
-        return course_id;
+        return courseId;
     }
 
-    public void setCourseId(String course_id) {
-        this.course_id = course_id;
+    public void setCourseId(String courseId) {
+        this.courseId = courseId;
     }
 
     public String getCourseName() {
-        return course_name;
+        return courseName;
     }
 
-    public void setCourseName(String course_name) {
-        this.course_name = course_name;
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
     }
 
     public int getCredits() {

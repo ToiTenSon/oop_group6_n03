@@ -21,5 +21,6 @@
         <ComboBox fx:id="genderComboBox" layoutX="400.0" layoutY="110.0" promptText="Chọn Giới Tính" />
         <Button text="Thêm Sinh Viên" layoutX="400.0" layoutY="150.0" onAction="#handleAddStudent"/>
         <Button text="Xóa Sinh Viên" layoutX="500.0" layoutY="150.0" onAction="#handleRemoveStudent"/>
+        <Button text="Cập Nhật Sinh Viên" layoutX="600.0" layoutY="150.0" onAction="#handleUpdateStudent"/>
     </children>
 </Pane>
