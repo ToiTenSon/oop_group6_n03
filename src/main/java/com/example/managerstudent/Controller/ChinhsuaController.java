@@ -15,9 +15,7 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 
 public class ChinhsuaController {
     @FXML
@@ -73,9 +71,13 @@ public class ChinhsuaController {
         String name = nameField.getText();
         String gender = genderComboBox.getValue();
 
+        // Tạo sinh viên mới
         Student newStudent = new Student(id, name, gender);
         studentManager.addStudent(newStudent);
         studentList.add(newStudent);
+
+        // Ghi thông tin đăng nhập vào file login.txt
+        writeLoginToFile(newStudent.getUsername(), newStudent.getPassword()); // Sử dụng getUsername và getPassword
 
         // Thông báo thông tin đăng nhập
         showAlert("Thông tin đăng nhập", "Tên đăng nhập: " + newStudent.getUsername() + "\nMật khẩu: " + newStudent.getPassword());
@@ -84,6 +86,18 @@ public class ChinhsuaController {
         nameField.clear();
         genderComboBox.setValue(null);
     }
+    // Ghi thông tin đăng nhập vào file
+    private void writeLoginToFile(String username, String password) {
+        String filePath = "src/main/resources/com/example/managerstudent/login.txt";
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
+            writer.write("Login: " + username + ", Password: " + password);
+            writer.newLine();
+        } catch (IOException e) {
+            System.err.println("Lỗi khi ghi vào file: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Lỗi khi ghi vào file!", ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
 
     @FXML
     private void handleRemoveStudent() {
@@ -91,12 +105,38 @@ public class ChinhsuaController {
         if (selectedStudent != null) {
             studentManager.removeStudent(selectedStudent.getStudentId());
             studentList.remove(selectedStudent);
+
+            // Xóa thông tin đăng nhập trong file login.txt
+            removeLoginFromFile(selectedStudent.getUsername());
+
             showAlert("Thông báo", "Đã xóa sinh viên: " + selectedStudent.getStudentName());
         } else {
             showAlert("Chưa chọn sinh viên", "Vui lòng chọn một sinh viên để xóa.");
         }
     }
 
+    // Hàm để xóa thông tin đăng nhập của sinh viên từ file
+    private void removeLoginFromFile(String username) {
+        String filePath = "src/main/resources/com/example/managerstudent/login.txt";
+        File inputFile = new File(filePath);
+        File tempFile = new File(inputFile.getAbsolutePath() + ".tmp");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.contains("Login: " + username)) { // Kiểm tra nếu dòng này không chứa tên đăng nhập cần xóa
+                    writer.write(line);
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Lỗi khi xóa thông tin đăng nhập: " + e.getMessage());
+        }
+        // Xóa file cũ và đổi tên file tạm thành file gốc
+        inputFile.delete();
+        tempFile.renameTo(inputFile);
+    }
     @FXML
     private void handleUpdateStudent() {
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
@@ -111,6 +151,9 @@ public class ChinhsuaController {
 
             studentManager.updateStudent(selectedStudent);
             studentTable.refresh();
+
+            // Ghi thông tin đăng nhập của sinh viên vào file login.txt
+            writeLoginToFile(selectedStudent.getUsername(), selectedStudent.getPassword()); // Nếu cần cập nhật mật khẩu
 
             idField.clear();
             nameField.clear();

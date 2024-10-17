@@ -3,7 +3,6 @@ package com.example.managerstudent.Model;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class StudentManager {
     private List<Student> students = new ArrayList<>();
@@ -16,7 +15,7 @@ public class StudentManager {
     // Thêm sinh viên vào danh sách và lưu vào file
     public void addStudent(Student student) {
         students.add(student);
-        saveStudentsToFile();
+        saveStudentsToFile(); // Lưu thông tin sinh viên vào students.txt
     }
 
     // Xóa sinh viên dựa trên ID và lưu vào file
@@ -94,6 +93,7 @@ public class StudentManager {
             e.printStackTrace();
         }
     }
+
     public boolean isCourseExists(String courseId) {
         // Đọc thông tin môn học từ file monhoc.txt
         try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/com/example/managerstudent/monhoc.txt"))) {
@@ -110,6 +110,7 @@ public class StudentManager {
         }
         return false; // Nếu không tìm thấy
     }
+
     // Lấy danh sách sinh viên
     public List<Student> getStudents() {
         return students;

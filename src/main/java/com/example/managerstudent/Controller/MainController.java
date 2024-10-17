@@ -9,9 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Optional;
 
 public class MainController {
@@ -20,18 +18,20 @@ public class MainController {
 
     @FXML
     private void handleStudentLogin() {
-        showLoginDialog("Đăng nhập sinh viên", "Choice.fxml");
+        showLoginDialog("Đăng nhập sinh viên", "Choice.fxml", "student");
     }
 
     @FXML
     private void handleTeacherLogin() {
-        showLoginDialog("Đăng nhập giảng viên", "Choices.fxml");
+        showLoginDialog("Đăng nhập giảng viên", "Choices.fxml", "teacher");
     }
+
     @FXML
     private void handleCbqlLogin() {
-        showLoginDialog("Đăng nhập CBQL", "CBQL.fxml");
+        showLoginDialog("Đăng nhập CBQL", "CBQL.fxml", "cbql");
     }
-    private void showLoginDialog(String title, String fxmlFile) {
+
+    private void showLoginDialog(String title, String fxmlFile, String userType) {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle(title);
 
@@ -51,22 +51,49 @@ public class MainController {
             String username = usernameField.getText();
             String password = passwordField.getText();
 
-            writeLoginToFile(username, password);
-            loadScene(fxmlFile);
+            // Kiểm tra thông tin đăng nhập
+            if (isLoginValid(username, password, userType)) {
+                loadScene(fxmlFile);
+            } else {
+                showAlert("Thông báo", "Tên đăng nhập hoặc mật khẩu không đúng!");
+            }
         }
     }
 
+    // Kiểm tra thông tin đăng nhập
+    private boolean isLoginValid(String username, String password, String userType) {
+        String filePath = "";
 
-    private void writeLoginToFile(String username, String password) {
-        String filePath = "src/main/resources/com/example/managerstudent/login.txt";
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-            writer.write("Login: " + username + ", Password: " + password);
-            writer.newLine();
-        } catch (IOException e) {
-            System.err.println("Lỗi khi ghi vào file: " + e.getMessage());
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Lỗi khi ghi vào file!", ButtonType.OK);
-            alert.showAndWait();
+        // Xác định file cần đọc dựa trên userType
+        if (userType.equals("student")) {
+            filePath = "src/main/resources/com/example/managerstudent/login.txt"; // Đăng nhập sinh viên
+        } else if (userType.equals("teacher")) {
+            filePath = "src/main/resources/com/example/managerstudent/giaovien.txt"; // Đăng nhập giảng viên
+        } else if (userType.equals("cbql")) {
+            filePath = "src/main/resources/com/example/managerstudent/quanly.txt"; // Đăng nhập CBQL
         }
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Giả sử định dạng lưu là "Login: username, Password: password"
+                if (line.equals("Login: " + username + ", Password: " + password)) {
+                    return true; // Thông tin đăng nhập hợp lệ
+                }
+            }
+        } catch (IOException e) {
+            System.err.println("Lỗi khi đọc từ file: " + e.getMessage());
+        }
+        return false; // Thông tin đăng nhập không hợp lệ
+    }
+
+    // Hiển thị thông báo lỗi
+    private void showAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 
     private void loadScene(String fxmlFile) {
