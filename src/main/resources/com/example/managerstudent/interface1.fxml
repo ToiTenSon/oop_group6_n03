@@ -15,13 +15,13 @@
             </image>
         </ImageView>
 
-        <Button fx:id="studentButton" layoutX="46.0" layoutY="262.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Tôi là sinh viên" onAction="#handleStudentLogin">
+        <Button fx:id="studentButton" layoutX="46.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleStudentLogin" prefHeight="26.0" prefWidth="150.0" text="Tôi là sinh viên">
             <font>
                 <Font size="16.0" />
             </font>
         </Button>
 
-        <Button fx:id="teacherButton" layoutX="425.0" layoutY="262.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Tôi là giảng viên" onAction="#handleTeacherLogin">
+        <Button fx:id="teacherButton" layoutX="425.0" layoutY="262.0" mnemonicParsing="false" onAction="#handleTeacherLogin" prefHeight="26.0" prefWidth="150.0" text="Tôi là giảng viên">
             <font>
                 <Font size="16.0" />
             </font>
@@ -32,5 +32,10 @@
                 <Font size="22.0" />
             </font>
         </Text>
+        <Button fx:id="cbqlButton" layoutX="46.0" layoutY="344.0" mnemonicParsing="false" onAction="#handleCbqlLogin" prefHeight="26.0" prefWidth="150.0" text="Tôi là CBQL">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

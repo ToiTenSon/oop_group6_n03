@@ -1,6 +1,5 @@
-23010311,Nguyễn Trường Sơn,Nam
-23010311,2907,oop,3.0
-23010311,2302,dstt,6.0
-23010311,2301,chay,6.0
-23010311,2301,oop,3.0
-23010311,Nguyễn Trường Sơn,Nam
+23010049,Nguyễn Đăng HIếu,Nam
+23010049,23010049,Thuật Toán,5.0
+23010313,Nguyễn Trường Sơn,Nam
+23010050,Nguyễn Tùng Dương,Nam
+ID: 23010049, Họ Tên: Nguyễn Đăng HIếu, Giới Tính: Nam, Tên đăng nhập: 23010049, Môn Học: Thuật Toán, Điểm: 5,00

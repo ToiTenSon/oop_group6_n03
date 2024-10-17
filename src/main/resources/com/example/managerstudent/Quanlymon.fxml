@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.MonhocController">
+    <children>
+        <TableView fx:id="courseTable" layoutX="33.0" layoutY="34.0" prefHeight="454.0" prefWidth="350.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="74.0" text="CourseID" />
+                <TableColumn fx:id="nameColumn" prefWidth="196.0" text="CourseName" />
+                <TableColumn fx:id="creditsColumn" prefWidth="75.0" text="Credits" />
+            </columns>
+        </TableView>
+        <TextField fx:id="idField" layoutX="400.0" layoutY="34.0" promptText="Nhập ID" />
+        <TextField fx:id="nameField" layoutX="400.0" layoutY="70.0" promptText="Nhập tên môn học" />
+        <TextField fx:id="creditsField" layoutX="400.0" layoutY="110.0" promptText="Nhập số tín chỉ" />
+        <Button layoutX="400.0" layoutY="165.0" onAction="#handleAddCourse" text="Thêm Môn Học" />
+        <Button layoutX="400.0" layoutY="210.0" onAction="#handleRemoveCourse" text="Xóa Môn Học" />
+    </children>
+</Pane>

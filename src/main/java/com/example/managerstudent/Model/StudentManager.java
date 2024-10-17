@@ -94,7 +94,22 @@ public class StudentManager {
             e.printStackTrace();
         }
     }
-
+    public boolean isCourseExists(String courseId) {
+        // Đọc thông tin môn học từ file monhoc.txt
+        try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/com/example/managerstudent/monhoc.txt"))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Kiểm tra xem ID có khớp không
+                String[] parts = line.split(","); // Tách chuỗi theo dấu phẩy
+                if (parts.length > 0 && parts[0].trim().equals(courseId)) {
+                    return true; // Nếu tìm thấy ID môn học
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false; // Nếu không tìm thấy
+    }
     // Lấy danh sách sinh viên
     public List<Student> getStudents() {
         return students;

@@ -77,6 +77,9 @@ public class ChinhsuaController {
         studentManager.addStudent(newStudent);
         studentList.add(newStudent);
 
+        // Thông báo thông tin đăng nhập
+        showAlert("Thông tin đăng nhập", "Tên đăng nhập: " + newStudent.getUsername() + "\nMật khẩu: " + newStudent.getPassword());
+
         idField.clear();
         nameField.clear();
         genderComboBox.setValue(null);
@@ -123,17 +126,26 @@ public class ChinhsuaController {
         if (selectedStudent != null) {
             String courseId = courseIdField.getText();
             String courseName = courseNameField.getText();
-            float grade = Float.parseFloat(gradeField.getText());
+
+            // Kiểm tra xem ID môn học có tồn tại không
+            if (!studentManager.isCourseExists(courseId)) {
+                showAlert("Lỗi", "ID môn học không hợp lệ. Vui lòng kiểm tra lại.");
+                return; // Dừng thực hiện nếu ID không hợp lệ
+            }
+
+            float grade;
+            try {
+                grade = Float.parseFloat(gradeField.getText());
+            } catch (NumberFormatException e) {
+                showAlert("Lỗi", "Điểm phải là một số hợp lệ.");
+                return;
+            }
 
             Course course = new Course(courseId, courseName, 3);
             studentManager.updateStudentGrade(selectedStudent.getStudentId(), course, grade);
 
-            // Lưu thông tin sinh viên vào tệp
             saveStudentDetailsToFile(selectedStudent, course.getCourseName(), grade);
-
-            // Cập nhật thông tin chi tiết sinh viên
             handleDetailStudent();
-
             studentTable.refresh();
 
             courseIdField.clear();
@@ -145,11 +157,12 @@ public class ChinhsuaController {
     }
 
     private void saveStudentDetailsToFile(Student student, String course, float grade) {
-        String filePath = "src/main/resources/com/example/managerstudent/students.txt"; // Đường dẫn đến tệp
+        String filePath = "src/main/resources/com/example/managerstudent/students.txt";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-            String data = String.format("ID: %d, Họ Tên: %s, Giới Tính: %s, Môn Học: %s, Điểm: %.2f%n",
-                    student.getStudentId(), student.getStudentName(), student.getGender(), course, grade);
-            writer.write(data); // Ghi thông tin vào tệp
+            String data = String.format("ID: %d, Họ Tên: %s, Giới Tính: %s, Tên đăng nhập: %s, Môn Học: %s, Điểm: %.2f%n",
+                    student.getStudentId(), student.getStudentName(), student.getGender(),
+                    student.getUsername(), course, grade);
+            writer.write(data);
         } catch (IOException e) {
             e.printStackTrace();
             showAlert("Lỗi", "Không thể lưu thông tin sinh viên vào tệp.");
@@ -160,14 +173,12 @@ public class ChinhsuaController {
     private void handleDetailStudent() {
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();
         if (selectedStudent != null) {
-            // Tạo cửa sổ mới để hiển thị thông tin chi tiết
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/StudentDetail.fxml"));
                 Parent root = loader.load();
 
-                // Lấy controller và thiết lập thông tin
                 StudentDetailController detailController = loader.getController();
-                detailController.setStudentDetails(selectedStudent); // Truyền thông tin sinh viên
+                detailController.setStudentDetails(selectedStudent);
 
                 Stage stage = new Stage();
                 stage.setTitle("Chi tiết sinh viên");

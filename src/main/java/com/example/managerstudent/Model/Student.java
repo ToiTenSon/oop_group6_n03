@@ -7,12 +7,16 @@ public class Student {
     private int studentId;
     private String studentName;
     private String gender;
+    private String username;
+    private String password;
     private Map<Course, Float> grades;
 
     public Student(int studentId, String studentName, String gender) {
         this.studentId = studentId;
         this.studentName = studentName;
         this.gender = gender;
+        this.username = String.valueOf(studentId); // Tên đăng nhập là mã số sinh viên
+        this.password = "123456"; // Mật khẩu mặc định
         this.grades = new HashMap<>();
     }
 
@@ -22,6 +26,7 @@ public class Student {
 
     public void setStudentId(int studentId) {
         this.studentId = studentId;
+        this.username = String.valueOf(studentId); // Cập nhật lại tên đăng nhập khi thay đổi mã số sinh viên
     }
 
     public String getStudentName() {
@@ -38,6 +43,18 @@ public class Student {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void addGrade(Course course, float grade) {

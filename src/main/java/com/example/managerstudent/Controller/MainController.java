@@ -27,7 +27,10 @@ public class MainController {
     private void handleTeacherLogin() {
         showLoginDialog("Đăng nhập giảng viên", "Choices.fxml");
     }
-
+    @FXML
+    private void handleCbqlLogin() {
+        showLoginDialog("Đăng nhập CBQL", "CBQL.fxml");
+    }
     private void showLoginDialog(String title, String fxmlFile) {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.setTitle(title);
@@ -52,6 +55,7 @@ public class MainController {
             loadScene(fxmlFile);
         }
     }
+
 
     private void writeLoginToFile(String username, String password) {
         String filePath = "src/main/resources/com/example/managerstudent/login.txt";

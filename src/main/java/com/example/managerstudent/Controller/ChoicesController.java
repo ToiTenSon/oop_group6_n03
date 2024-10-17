@@ -34,6 +34,25 @@ public class ChoicesController {
             alert.showAndWait();
         }
     }
+    @FXML
+    public void handleEditCourse() {
+        try {
+            // Tải giao diện Quanlymon.fxml
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/Quanlymon.fxml"));
+            Parent root = loader.load();
+
+            // Tạo một cảnh mới
+            Stage stage = (Stage) editStudentButton.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (Exception e) {
+            // Ghi lại thông báo lỗi
+            System.err.println("Lỗi: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Không thể mở giao diện chỉnh sửa môn học: " + e.getMessage(), ButtonType.OK);
+            alert.showAndWait();
+        }
+    }
+
 
     @FXML
     public void handleInputScore() {
@@ -56,7 +75,7 @@ public class ChoicesController {
     public void handleRegisterCourse() {
         try {
             // Tải giao diện dangkyhoc.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/dangkyhoc.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/Quanlymon1.fxml"));
             Parent root = loader.load();
 
             // Tạo một cảnh mới
