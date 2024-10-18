@@ -93,6 +93,15 @@ public class StudentManager {
             e.printStackTrace();
         }
     }
+    public String getStudentNameById(String studentId) {
+        for (Student student : students) {
+            if (String.valueOf(student.getStudentId()).equals(studentId)) {
+                return student.getStudentName();
+            }
+        }
+        return null; // Trả về null nếu không tìm thấy sinh viên
+    }
+
 
     public boolean isCourseExists(String courseId) {
         // Đọc thông tin môn học từ file monhoc.txt
