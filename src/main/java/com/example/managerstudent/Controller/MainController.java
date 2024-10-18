@@ -16,9 +16,12 @@ public class MainController {
     @FXML
     private ImageView imageView;
 
+    // Tạo biến để lưu ID sinh viên hiện tại
+    private String currentStudentId;
+
     @FXML
     private void handleStudentLogin() {
-        showLoginDialog("Đăng nhập sinh viên", "Choice.fxml", "student");
+        showLoginDialog("Đăng nhập sinh viên", "Quanlymon1.fxml", "student");
     }
 
     @FXML
@@ -53,7 +56,8 @@ public class MainController {
 
             // Kiểm tra thông tin đăng nhập
             if (isLoginValid(username, password, userType)) {
-                loadScene(fxmlFile);
+                currentStudentId = username; // ID sinh viên là tên đăng nhập
+                loadScene(fxmlFile, currentStudentId); // Gọi loadScene với studentId
             } else {
                 showAlert("Thông báo", "Tên đăng nhập hoặc mật khẩu không đúng!");
             }
@@ -96,10 +100,16 @@ public class MainController {
         alert.showAndWait();
     }
 
-    private void loadScene(String fxmlFile) {
+    private void loadScene(String fxmlFile, String studentId) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/" + fxmlFile));
             Parent root = loader.load();
+
+            // Lấy MonhocController và truyền ID sinh viên nếu cần
+            if (fxmlFile.equals("Quanlymon1.fxml")) {
+                MonhocController monhocController = loader.getController();
+                monhocController.setStudentId(studentId); // Truyền ID sinh viên
+            }
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) imageView.getScene().getWindow();

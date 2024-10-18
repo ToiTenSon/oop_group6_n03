@@ -7,6 +7,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -211,7 +212,24 @@ public class ChinhsuaController {
             showAlert("Lỗi", "Không thể lưu thông tin sinh viên vào tệp.");
         }
     }
+    public void handleBack(ActionEvent event) {
+        try {
+            // Tải giao diện trước đó từ FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/Choices.fxml"));
+            Parent previousRoot = loader.load();
 
+            // Lấy Stage hiện tại
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Thiết lập Scene mới cho Stage và hiển thị
+            Scene scene = new Scene(previousRoot);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     private void handleDetailStudent() {
         Student selectedStudent = studentTable.getSelectionModel().getSelectedItem();

@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.ChinhsuaController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.ChinhsuaController">
     <children>
-        <TableView fx:id="studentTable" layoutX="33.0" layoutY="34.0" prefHeight="454.0" prefWidth="350.0">
+        <TableView fx:id="studentTable" layoutX="32.0" layoutY="36.0" prefHeight="454.0" prefWidth="350.0">
             <columns>
                 <TableColumn fx:id="idColumn" prefWidth="74.0" text="ID" />
                 <TableColumn fx:id="nameColumn" prefWidth="196.0" text="Họ và tên" />
@@ -19,9 +19,11 @@
         <TextField fx:id="idField" layoutX="400.0" layoutY="34.0" promptText="Nhập ID" />
         <TextField fx:id="nameField" layoutX="400.0" layoutY="70.0" promptText="Nhập Họ và Tên" />
         <ComboBox fx:id="genderComboBox" layoutX="400.0" layoutY="110.0" promptText="Chọn Giới Tính" />
-        <Button layoutX="400.0" layoutY="265.0" onAction="#handleAddStudent" text="Thêm Sinh Viên" />
+        <Button layoutX="400.0" layoutY="150.0" onAction="#handleAddStudent" text="Thêm Sinh Viên" />
         <Button layoutX="400.0" layoutY="305.0" onAction="#handleRemoveStudent" text="Xóa Sinh Viên" />
-        <Button layoutX="600.0" layoutY="265.0" onAction="#handleUpdateStudent" text="Cập Nhật Sinh Viên" />
-        <Button layoutX="600.0" layoutY="191.0" onAction="#handleDetailStudent" text="Chi tiết Sinh Viên" />
+        <Button layoutX="399.0" layoutY="250.0" onAction="#handleUpdateStudent" text="Cập Nhật Sinh Viên" />
+        <Button layoutX="400.0" layoutY="196.0" onAction="#handleDetailStudent" text="Chi tiết Sinh Viên" />
+        <Button layoutX="559.0" layoutY="447.0" onAction="#handleBack" text="Quay lại" />
+
     </children>
 </Pane>

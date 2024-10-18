@@ -7,8 +7,13 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 import java.io.*;
 
@@ -63,7 +68,6 @@ public class MonhocController {
     // Phương thức để lấy ID sinh viên từ MainController
     public void setStudentId(String studentId) {
         this.studentId = studentId;
-        loadRegisteredCourses(); // Tải môn học đã đăng ký khi ID được thiết lập
     }
 
     @FXML
@@ -86,7 +90,44 @@ public class MonhocController {
             e.printStackTrace();
         }
     }
+    @FXML
+    private void handleShowRegisteredCourses() {
+        try {
+            StringBuilder registeredCoursesInfo = new StringBuilder();
 
+            // Đọc từ file registered_courses.txt
+            try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/com/example/managerstudent/registered_courses.txt"))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] parts = line.split(","); // Tách chuỗi theo dấu phẩy
+                    if (parts.length >= 4) {
+                        String registeredStudentId = parts[0];
+                        String studentName = parts[1];
+                        String courseId = parts[2];
+                        String courseName = parts[3];
+
+                        // Chỉ hiển thị thông tin của sinh viên có ID trùng với studentId
+                        if (registeredStudentId.equals(this.studentId)) {
+                            registeredCoursesInfo.append("ID Sinh Viên: ").append(registeredStudentId)
+                                    .append(", Tên Sinh Viên: ").append(studentName)
+                                    .append(", Môn Học: ").append(courseId)
+                                    .append(" - ").append(courseName).append("\n");
+                        }
+                    }
+                }
+            }
+
+            // Hiển thị thông tin
+            if (registeredCoursesInfo.length() > 0) {
+                showAlert("Thông Tin Môn Học Đã Đăng Ký", registeredCoursesInfo.toString());
+            } else {
+                showAlert("Thông Báo", "Sinh viên chưa đăng ký môn học nào.");
+            }
+        } catch (IOException e) {
+            System.out.println("Lỗi khi đọc file đăng ký: " + e.getMessage());
+            showAlert("Lỗi", "Không thể đọc file đăng ký môn học.");
+        }
+    }
     @FXML
     private void handleAddCoursee() {
         try {
@@ -102,47 +143,6 @@ public class MonhocController {
             System.out.println("Lỗi khi thêm môn học: " + e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    // Phương thức để tải và hiển thị môn học đã đăng ký
-    private void loadRegisteredCourses() {
-        try {
-            ObservableList<Course> registeredCourses = FXCollections.observableArrayList();
-
-            // Đọc từ file registered_courses.txt
-            try (BufferedReader reader = new BufferedReader(new FileReader("src/main/resources/com/example/managerstudent/registered_courses.txt"))) {
-                String line;
-                while ((line = reader.readLine()) != null) {
-                    String[] parts = line.split(","); // Tách chuỗi theo dấu phẩy
-                    if (parts.length >= 4) {
-                        String idFromFile = parts[0];
-                        String courseId = parts[2];
-                        String courseName = parts[3];
-
-                        // Chỉ thêm môn học nếu ID sinh viên khớp
-                        if (this.studentId.equals(idFromFile)) {
-                            registeredCourses.add(new Course(courseId, courseName, 3)); // Giả định 3 là số tín chỉ mặc định
-                        }
-                    }
-                }
-            }
-
-            // Hiển thị thông tin trong bảng
-            courseTable.setItems(registeredCourses);
-
-            // Hiển thị thông báo nếu không có môn học nào
-            if (registeredCourses.isEmpty()) {
-                showAlert("Thông Báo", "Không có môn học nào đã đăng ký cho sinh viên này.");
-            }
-        } catch (IOException e) {
-            System.out.println("Lỗi khi đọc file đăng ký: " + e.getMessage());
-            showAlert("Lỗi", "Không thể đọc file đăng ký môn học.");
-        }
-    }
-
-    @FXML
-    private void handleShowRegisteredCourses() {
-        loadRegisteredCourses(); // Tải và hiển thị môn học đã đăng ký
     }
 
     private void saveRegisteredCourse(String studentId, String courseId, String courseName) {
@@ -185,6 +185,43 @@ public class MonhocController {
         alert.setContentText(message);
         alert.showAndWait();
     }
+    public void handleBackk(ActionEvent event) {
+        try {
+            // Tải giao diện trước đó từ FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/CBQL.fxml"));
+            Parent previousRoot = loader.load();
+
+            // Lấy Stage hiện tại
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Thiết lập Scene mới cho Stage và hiển thị
+            Scene scene = new Scene(previousRoot);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public void handleBack(ActionEvent event) {
+        try {
+            // Tải giao diện trước đó từ FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/interface1.fxml"));
+            Parent previousRoot = loader.load();
+
+            // Lấy Stage hiện tại
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Thiết lập Scene mới cho Stage và hiển thị
+            Scene scene = new Scene(previousRoot);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     private String getStudentNameById(String studentId) {
         // Đây là nơi gọi đến StudentManager để lấy tên sinh viên theo ID

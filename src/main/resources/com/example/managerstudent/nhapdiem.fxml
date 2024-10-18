@@ -7,7 +7,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="638.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.ChinhsuaController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="818.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.ChinhsuaController">
     <children>
         <TableView fx:id="studentTable" layoutX="33.0" layoutY="34.0" prefHeight="454.0" prefWidth="350.0">
             <columns>
@@ -22,7 +22,8 @@
         <TextField fx:id="courseIdField" layoutX="400.0" layoutY="150.0" promptText="Nhập ID khóa học" />
         <TextField fx:id="courseNameField" layoutX="400.0" layoutY="185.0" promptText="Nhập tên khóa học" />
         <TextField fx:id="gradeField" layoutX="400.0" layoutY="220.0" promptText="Nhập điểm" />
-        <Button layoutX="600.0" layoutY="305.0" onAction="#handleUpdateStudentGrade" text="Cập nhật điểm sinh viên" />
-        <Button layoutX="600.0" layoutY="191.0" onAction="#handleDetailStudent" text="Chi tiết Sinh Viên" />
+        <Button layoutX="400.0" layoutY="263.0" onAction="#handleUpdateStudentGrade" text="Cập nhật điểm sinh viên" />
+        <Button layoutX="400.0" layoutY="306.0" onAction="#handleDetailStudent" text="Chi tiết Sinh Viên" />
+        <Button layoutX="584.0" layoutY="462.0" onAction="#handleBack" text="Quay lại" />
     </children>
 </Pane>

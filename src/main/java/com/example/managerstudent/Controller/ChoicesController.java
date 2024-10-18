@@ -1,5 +1,6 @@
 package com.example.managerstudent.Controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
@@ -8,6 +9,8 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.fxml.FXMLLoader;
+
+import java.io.IOException;
 
 public class ChoicesController {
 
@@ -70,7 +73,24 @@ public class ChoicesController {
             alert.showAndWait();
         }
     }
+    public void handleBack(ActionEvent event) {
+        try {
+            // Tải giao diện trước đó từ FXML
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/interface1.fxml"));
+            Parent previousRoot = loader.load();
 
+            // Lấy Stage hiện tại
+            Stage stage = (Stage) ((javafx.scene.Node) event.getSource()).getScene().getWindow();
+
+            // Thiết lập Scene mới cho Stage và hiển thị
+            Scene scene = new Scene(previousRoot);
+            stage.setScene(scene);
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     @FXML
     public void handleRegisterCourse() {
         try {

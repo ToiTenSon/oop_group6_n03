@@ -20,5 +20,7 @@
         <TextField fx:id="creditsField" layoutX="400.0" layoutY="110.0" promptText="Nhập số tín chỉ" />
         <Button layoutX="400.0" layoutY="165.0" onAction="#handleAddCourse" text="Thêm Môn Học" />
         <Button layoutX="400.0" layoutY="210.0" onAction="#handleRemoveCourse" text="Xóa Môn Học" />
+        <Button layoutX="400.0" layoutY="350.0" onAction="#handleBackk" text="Quay lại" />
+
     </children>
 </Pane>

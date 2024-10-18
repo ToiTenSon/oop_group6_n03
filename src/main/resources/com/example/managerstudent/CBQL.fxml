@@ -24,5 +24,6 @@
             <Font size="16.0" />
          </font>
       </Button>
+      <Button layoutX="400.0" layoutY="350.0" onAction="#handleBack" text="Quay lại" />
    </children>
 </AnchorPane>

@@ -19,7 +19,8 @@
         <TextField fx:id="nameField" layoutX="400.0" layoutY="70.0" promptText="Tên môn học" />
         <TextField fx:id="creditsField" layoutX="400.0" layoutY="110.0" promptText="Số tín chỉ" />
         <Button layoutX="400.0" layoutY="165.0" prefHeight="26.0" prefWidth="92.0" text="Đăng ký học" onAction="#handleAddCoursee"/>
-        <Button layoutX="400.0" layoutY="215.0" mnemonicParsing="false" text="Môn học đã đăng ký" onAction="#handleShowRegisteredCourses"/>
 
+        <Button layoutX="400.0" layoutY="350.0" onAction="#handleBack" text="Quay lại" />
+        <Button layoutX="400.0" layoutY="215.0" mnemonicParsing="false" text="Môn học đã đăng ký" onAction="#handleShowRegisteredCourses"/>
     </children>
 </Pane>
