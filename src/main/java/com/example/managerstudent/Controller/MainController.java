@@ -1,13 +1,13 @@
 package com.example.managerstudent.Controller;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 
 import java.io.*;
 import java.util.Optional;
@@ -16,12 +16,9 @@ public class MainController {
     @FXML
     private ImageView imageView;
 
-    // Tạo biến để lưu ID sinh viên hiện tại
-    private String currentStudentId;
-
     @FXML
     private void handleStudentLogin() {
-        showLoginDialog("Đăng nhập sinh viên", "Dangky.fxml", "student");
+        showLoginDialog("Đăng nhập sinh viên", "Choice.fxml", "student");
     }
 
     @FXML
@@ -56,8 +53,7 @@ public class MainController {
 
             // Kiểm tra thông tin đăng nhập
             if (isLoginValid(username, password, userType)) {
-                currentStudentId = username; // ID sinh viên là tên đăng nhập
-                loadScene(fxmlFile, currentStudentId);
+                loadScene(fxmlFile);
             } else {
                 showAlert("Thông báo", "Tên đăng nhập hoặc mật khẩu không đúng!");
             }
@@ -100,14 +96,10 @@ public class MainController {
         alert.showAndWait();
     }
 
-    private void loadScene(String fxmlFile, String studentId) {
+    private void loadScene(String fxmlFile) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/Quanlymon1.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/managerstudent/" + fxmlFile));
             Parent root = loader.load();
-
-            // Lấy MonhocController và truyền ID sinh viên
-            MonhocController monhocController = loader.getController();
-            monhocController.setStudentId(studentId); // Truyền ID sinh viên
 
             Scene scene = new Scene(root);
             Stage stage = (Stage) imageView.getScene().getWindow();
