@@ -1,8 +1,2 @@
 23010049,Nguyễn Đăng Hiếu,Nam
-23010049,23010049,Văn ,6.0
-23010049,23010049,Thuật Toán,9.0
-23010051,Nguyễn Tùng Dương,Nam
-23010051,23010049,Thuật Toán,7.0
 23010313,Nguyễn Trường Sơn,Nam
-23010089,Cấn Ngọc Công,Nam
-23010048,Nguyễn Văn Hùng,Nam

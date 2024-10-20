@@ -9,17 +9,17 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.managerstudent.Controller.ChoicesController">
    <children>
-      <ImageView fitHeight="400.0" fitWidth="600.0" layoutY="-2.0">
+      <ImageView fitHeight="411.0" fitWidth="600.0" layoutY="-2.0">
          <image>
-            <Image url="@CBQL.jpg" />
+            <Image url="@cbql.jpeg" />
          </image>
       </ImageView>
-      <Text layoutX="50.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cán Bộ Quản Lý">
+      <Text layoutX="7.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cán Bộ Quản Lý">
          <font>
-            <Font size="39.0" />
+            <Font size="36.0" />
          </font>
       </Text>
-      <Button fx:id="editStudentButton" layoutX="38.0" layoutY="119.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="219.0" text="Chỉnh sửa môn học" onAction="#handleEditCourse">
+      <Button fx:id="editStudentButton" layoutX="38.0" layoutY="119.0" mnemonicParsing="false" onAction="#handleEditCourse" prefHeight="31.0" prefWidth="219.0" text="Chỉnh sửa môn học">
          <font>
             <Font size="16.0" />
          </font>
