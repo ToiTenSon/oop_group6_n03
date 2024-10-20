@@ -36,6 +36,6 @@ các nghiệp vụ cho bài toán (tùy chọn).
 
 ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/them%20hoac%20sua.png)
 ## Giao diện đầu tiên của dự án
-![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/giaodien.png)
+![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/giaodienchinh.png)
 ## Giao diện khi lưu thông tin vào login.txt
 ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/%E1%BA%A2nh%20m%C3%A0n%20h%C3%ACnh%202024-10-04%20l%C3%BAc%20.png)
