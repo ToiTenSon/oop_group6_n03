@@ -1,0 +1,10 @@
+null,null,CSE703029,Lập trình hướng đối tượng
+null,null,CSE703006,Cấu trúc dữ liệu và thuật toán
+null,null,CSE703064,Xây dựng ứng dụng web
+null,null,FFS702003,Kinh tế chính trị Mác -Lê Nin
+null,null,EEE703068,Thị giác máy tính
+null,null,FEL703001,Tiếng Anh 1
+null,null,FFS701067,Bóng rổ
+null,null,FFS702006,Tư tưởng Hồ Chí Minh
+null,null,FFS702006,Tư tưởng Hồ Chí Minh
+null,null,FFS701070,Bóng rổ

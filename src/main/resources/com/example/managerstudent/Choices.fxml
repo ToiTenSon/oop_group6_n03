@@ -11,7 +11,7 @@
    <children>
       <ImageView fitHeight="426.0" fitWidth="600.0">
          <image>
-            <Image url="@qlsv.jpg" />
+            <Image url="@anhdep.jpeg" />
          </image>
       </ImageView>
       <Text layoutX="197.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Giảng  Viên">

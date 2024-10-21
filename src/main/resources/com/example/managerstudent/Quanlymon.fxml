@@ -10,8 +10,8 @@
     <children>
         <TableView fx:id="courseTable" layoutX="33.0" layoutY="34.0" prefHeight="454.0" prefWidth="350.0">
             <columns>
-                <TableColumn fx:id="idColumn" prefWidth="74.0" text="CourseID" />
-                <TableColumn fx:id="nameColumn" prefWidth="196.0" text="CourseName" />
+                <TableColumn fx:id="idColumn" prefWidth="92.0" text="CourseID" />
+                <TableColumn fx:id="nameColumn" prefWidth="178.0" text="CourseName" />
                 <TableColumn fx:id="creditsColumn" prefWidth="75.0" text="Credits" />
             </columns>
         </TableView>

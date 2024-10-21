@@ -1,0 +1,6 @@
+CSE703006,Cấu trúc dữ liệu và thuật toán,3
+CSE703064,Xây dựng ứng dụng web,3
+FFS702003,Kinh tế chính trị Mác -Lê Nin,2
+EEE703068,Thị giác máy tính,3
+FFS702006,Tư tưởng Hồ Chí Minh,3
+FFS701070,Bóng rổ,3
