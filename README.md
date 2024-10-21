@@ -33,5 +33,5 @@ Dự án này là một ứng dụng desktop quản lý sinh viên được phá
 ## Giao diện khi lưu thông tin vào login.txt
 ![alt](https://github.com/ToiTenSon/oop_group6_n03/blob/FinalProject/src/main/resources/com/example/managerstudent/image/%E1%BA%A2nh%20m%C3%A0n%20h%C3%ACnh%202024-10-04%20l%C3%BAc%20.png)
 ##Link trình bày sản phẩm
-![alt](https://youtu.be/zhuK7kPfVA4)
+[Nhấp vào đây](https://youtu.be/zhuK7kPfVA4)
 
